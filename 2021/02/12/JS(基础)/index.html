@@ -1,0 +1,355 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JS基础 | Dream's Blog</title><meta name="keywords" content="JS"><meta name="author" content="xiaoshuang"><meta name="copyright" content="xiaoshuang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="1. 初识js是一行一行的执行的，如果中间出现错误，则后面的代码不会执行转义符与 python中的一样  引入 js   与css一样有三种方法：写在&lt;script&gt;&lt;&#x2F;script&gt;里、另创一个 js文件&lt;script src&#x3D;&quot;js文件路径&quot;&gt;&lt;&#x2F;script&gt;、直接写在元素的内部   2. 基础输入输出语句 alert(ms">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS基础">
+<meta property="og:url" content="http://example.com/2021/02/12/JS(%E5%9F%BA%E7%A1%80)/index.html">
+<meta property="og:site_name" content="Dream&#39;s Blog">
+<meta property="og:description" content="1. 初识js是一行一行的执行的，如果中间出现错误，则后面的代码不会执行转义符与 python中的一样  引入 js   与css一样有三种方法：写在&lt;script&gt;&lt;&#x2F;script&gt;里、另创一个 js文件&lt;script src&#x3D;&quot;js文件路径&quot;&gt;&lt;&#x2F;script&gt;、直接写在元素的内部   2. 基础输入输出语句 alert(ms">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/img/back.jpg">
+<meta property="article:published_time" content="2021-02-12T14:15:59.000Z">
+<meta property="article:modified_time" content="2021-02-25T06:13:35.747Z">
+<meta property="article:author" content="xiaoshuang">
+<meta property="article:tag" content="JS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/back.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/02/12/JS(%E5%9F%BA%E7%A1%80)/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-02-25 14:13:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/hello.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主站</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/search/"><i class="fa-fw fas fa-search"></i><span> 搜索</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/back.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Dream's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主站</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/search/"><i class="fa-fw fas fa-search"></i><span> 搜索</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JS基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-02-12T14:15:59.000Z" title="Created 2021-02-12 22:15:59">2021-02-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-02-25T06:13:35.747Z" title="Updated 2021-02-25 14:13:35">2021-02-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>12min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="1-初识"><a href="#1-初识" class="headerlink" title="1. 初识"></a>1. 初识</h3><p>js是一行一行的执行的，如果中间出现错误，则后面的代码不会执行<br>转义符与 python中的一样</p>
+<ul>
+<li><p>引入 js</p>
+<p>  与css一样有三种方法：写在<code>&lt;script&gt;&lt;/script&gt;</code>里、另创一个 js文件<code>&lt;script src=&quot;js文件路径&quot;&gt;&lt;/script&gt;</code>、直接写在元素的内部</p>
+</li>
+</ul>
+<h3 id="2-基础"><a href="#2-基础" class="headerlink" title="2. 基础"></a>2. 基础</h3><p><strong>输入输出语句</strong></p>
+<p><code>alert(msg)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览器弹出警示框</p>
+<p><code>prompt(info)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览器弹出输入框&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 输入的都以字符串形式返回，同 input</p>
+<p><code>console.log(msg)</code>&nbsp;&nbsp;&nbsp;&nbsp;浏览器控制台打印输出信息 (浏览器检查里的 console)</p>
+<p><strong>声明变量、赋值</strong></p>
+<p>可以同时声明多个变量 (跟python一样)</p>
+<p><code>var age(变量名) = 18, name = &#39;xiao&#39;,  sex = &#39;男&#39;;</code></p>
+<p><strong>常见情况：</strong></p>
+<p>只声明，不赋值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined<br>不声明，不赋值，直接使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;报错</p>
+<p><strong>数字</strong></p>
+<p>八进制：以数字 0 开头的<br>十六进制：0x 开头的数字</p>
+<p><code>alert(Infinity/ -Infinity/ NaN);</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无穷大/ 负无穷大/ 非数值</p>
+<p>判断是不是数字: <code>console.log(isNaN(...));</code>&nbsp;&nbsp;&nbsp;&nbsp;返回 true或 false<br>检测字符串的长度：<code>console.log(str.length);</code><br>判断数据类型：<code>console.log(typeof 变量);</code></p>
+<p><strong>数据类型转换</strong></p>
+<p>转换为字符串：<code>var num = 1; alert(num.toString());</code> / <code>alert(String(num));/ alert(num + &#39;&#39;);</code></p>
+<blockquote>
+<p>最后一个表达是加上一个空字符串</p>
+</blockquote>
+<p>转换为数字：<code>parseInt(&#39;78&#39;)</code> / <code>parseFloat(&#39;78.21&#39;)</code> / <code>Number(&#39;12&#39;)</code> / <code>&#39;12&#39; - 0</code></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;应用:<code> console.log(&#39;120px&#39;)</code> —&gt; 120</p>
+<blockquote>
+<p>最后一个表达隐式转换，利用运算符，不能是加号！了解即可</p>
+</blockquote>
+<p>转换为布尔型：<code>Boolean(0)</code> —&gt; false     # 代表空、否定的值会转换为 false</p>
+<p><strong>运算符</strong></p>
+<p>算术运算符、递增、递减、逻辑运算符、赋值运算符、优先级 与 C语言的一样<br>比较运算符：多了一个全等 ===、！==  要求值、数据类型全一致<br>逻辑运算符：短路运算：|| 短路还是参考 C语言，注意，&amp;&amp; 短路情况与 || 刚好相反<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：<code>console.log(123 &amp;&amp; 4</code>) —&gt; 456</p>
+<p><strong>判断、循环语句</strong></p>
+<p>// 处处是 C语言的影子</p>
+<p>判断:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (条件表达式<span class="number">1</span>) &#123;执行语句<span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (条件表达式<span class="number">2</span>) &#123;执行语句<span class="number">2</span>&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span> &#123;执行语句n&#125;</span><br></pre></td></tr></table></figure>
+<p>三元表达式：<br>条件表达式 ？ 表达式1 : 表达式2;</p>
+<p>分支：<br>表达式里的值 === case 里的值，case 里的值不一定要是数字，也可以是字符串等，比如：case ‘apple’: 执行语句;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        执行语句<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        执行语句n;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>循环：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++) &#123;执行语句;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(表达式) &#123;循环体;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    循环体;</span><br><span class="line">&#125;<span class="keyword">while</span> (表达式)</span><br></pre></td></tr></table></figure>
+<p><strong>数组</strong></p>
+<p>创建数组：</p>
+<p>常用：<code>var arr = [];</code><br>利用 new:<br><code>var 数组名 = new Array();</code></p>
+<p>若是 Array(2)，代表创建了一个长度为2的空数组<br>若是 Array(2, 3)，代表创建了一个数组 [2,3]</p>
+<p>数组长度： <code>arr.length</code></p>
+<p>数组中新增元素:<br>修改 length长度：<code>arr.length = 5;</code>&nbsp;&nbsp;&nbsp;(手动修改)<br>修改索引号(追加/ 替换)：<code>var arr[&#39;red&#39;]; arr[1] = &#39;blue&#39;;</code></p>
+<p><strong>函数</strong></p>
+<p>创建函数：<code>function 函数名(形参) &#123; 函数体; &#125;</code></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code> var 变量名 = function (形参) &#123; 函数体; &#125;</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 匿名函数，没有函数名</p>
+<blockquote>
+<p>调用时不要忘了 ()</p>
+</blockquote>
+<p>当不确定有多少个参数传递时利用函数内置对象 <code>arguments</code>来获取，<code>arguments</code>为伪数组，具有数组的特性，但没有数组的一些方法</p>
+<p><strong>作用域</strong></p>
+<p>全局/局部 变量：结合 C语言了解，要注意的是，在函数内部，没有声明直接赋值的变量也是全局变量</p>
+<p><strong>预解析</strong> (了解)</p>
+<p>(1) 变量提升：把所有变量声明提升到当前的作用域最前面  不提升赋值操作<br>(2) 函数提升：把所有函数声明提升到当前的作用域最前面</p>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">fun ();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(num);</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果是：<code>undefined, 20</code></p>
+<p>以上代码预解析相当于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num;</span><br><span class="line">    <span class="built_in">console</span>.log(num);</span><br><span class="line">    num = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(num);</span><br><span class="line">&#125;</span><br><span class="line">num = <span class="number">10</span>;</span><br><span class="line">fun();</span><br></pre></td></tr></table></figure>
+<p>来个坑：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = b = c = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    <span class="built_in">console</span>.log(c);</span><br><span class="line">&#125;</span><br><span class="line">f1();</span><br><span class="line"><span class="built_in">console</span>.log(c);</span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p>结果是：<code>9 9 9 9 9 报错</code></p>
+<p>跳坑：<code>var a = b = c = 9</code> 相当于 <code>var a = 9; b = 9; c = 9;</code></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意，这里是用分号隔开的，不是集体声明逗号，未声明直接赋值，所以 b,c 是全局变量！</p>
+<hr>
+<p><strong>对象</strong></p>
+<p>创建对象、方法</p>
+<p>利用字面量 {}：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建对象、方法 (与字典很像)</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;xiao&#x27;</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    sex: <span class="string">&#x27;男&#x27;</span>,</span><br><span class="line">    sayHi: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;hi~~&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用对象的属性的两种方法</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.name);</span><br><span class="line"><span class="built_in">console</span>.log(obj[<span class="string">&#x27;age&#x27;</span>]);</span><br><span class="line"><span class="comment">// 调用对象的方法, 不要忘了加小括号</span></span><br><span class="line">obj.sayHi();</span><br></pre></td></tr></table></figure>
+<p>利用 new Object：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建了一个空的对象</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="comment">// 利用添加为对象创建属性、方法</span></span><br><span class="line">obj.name = <span class="string">&#x27;xiao&#x27;</span>;</span><br><span class="line">obj.age = <span class="number">18</span>;</span><br><span class="line">obj.sex = <span class="string">&#x27;男&#x27;</span>;</span><br><span class="line">obj.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;hi~~&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>利用构建函数：</p>
+<p>前面两种方法一次只能创建一个对象，若对象有许多相同之处，则会有许多重复代码，此时利用函数无疑是个不错的方法<br>也可以理解为‘父类’与‘子类’之间的关系</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构建的函数首字母要大写，与类相同</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Peo</span>(<span class="params">name, age, sex</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// this 指当前的</span></span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">    <span class="built_in">this</span>.sex = sex;</span><br><span class="line">    <span class="built_in">this</span>.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(hi~~)&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line"><span class="keyword">var</span> xiao = <span class="keyword">new</span> Peo(<span class="string">&#x27;xiao&#x27;</span>, <span class="number">18</span>, <span class="string">&#x27;男&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> shuang = <span class="keyword">new</span> Peo(<span class="string">&#x27;shuang&#x27;</span>, <span class="number">19</span>, <span class="string">&#x27;男&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>遍历对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(k);  <span class="comment">// 属性</span></span><br><span class="line">    <span class="built_in">console</span>.log(obj[k]);  <span class="comment">// 属性值 这里只能这么用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>内置对象</strong></p>
+<p>Math对象：可以直接使用</p>
+<p><code>Math.PI</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;圆周率</p>
+<p><code>Math.floor ()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向下取整&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 —&gt; 1</p>
+<p><code>Math.ceil ()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向上取整&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 —&gt; 2</p>
+<p><code>Math.round ()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;四舍五入取整</p>
+<p><code>Math.abs ()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绝对值</p>
+<p><code>Math.max/min ()</code>&nbsp;&nbsp;&nbsp;&nbsp;求最值</p>
+<p><code>Math.random ()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返回一个[0, 1)之间的小数</p>
+<p>得到一个两数之间的随机整数：</p>
+<p>公式：<code>Math.floor(Math.random() * (max - min + 1)) + min;</code><br><br><br>日期对象：与 Math不一样，使用 Date必须使用 new来调用创建的对象</p>
+<p><code>var date = new Date();</code></p>
+<p>如果没有参数，则返回当前系统的当前时间<br>如果有参数，返回的是参数代表的时间，常用的是 数字型：<code>2021, 01, 01</code> / 字符串型：<code>&#39;2021-01-01 8:8:8&#39;</code></p>
+<p>获取当前日期的某一具体部分方法 (字面意思)：</p>
+<p><code>.getFullYear()</code></p>
+<p><code>.getMonth()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 返回的月份会小一, 0~11, 使用时不要忘了加一</p>
+<p><code>.getDate()</code></p>
+<p><code>.getDay()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 星期几, 0~6, 星期日是0</p>
+<p><code>.getHours()</code></p>
+<p><code>.getMinutes()</code></p>
+<p><code>.getSeconds()</code></p>
+<p>注：利用数组配合 <code>.getDay()</code> 可得到具体星期几</p>
+<p>获得Date总的毫秒数 (默认是距离1970年1月1号过了多少毫秒，可自己添加参数)：</p>
+<p><code>.valueOf()</code> / <code>.getTime()</code></p>
+<p>简单的写法：<code>var date = +new Date();</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# +new Date() 返回的就是总的毫秒数</p>
+<p>H5 新增的写法：<code>console.log(Date.now());</code><br><br><br>数组对象：</p>
+<p>检测是否为数组</p>
+<p><code>console.log(arr instanceof Array);</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若arr是数组，则返回 true</p>
+<p><code>console.log(Array.isArray(arr));</code></p>
+<p>增减数组元素</p>
+<p><code>.push(参数1, ...)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在数组末尾添加一个或多个数组元素，返回新的长度</p>
+<p><code>.unshift(参数1, ...)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在数组前面添加一个或多个数组元素，返回新的长度</p>
+<p><code>.pop()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除数组最后一个元素，返回删除的元素</p>
+<p><code>.shift()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除数组第一个元素，返回删除的元素</p>
+<p>数组排序</p>
+<p><code>.reverse()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;颠倒数组中的元素，返回新数组</p>
+<p><code>.sort()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对数组中的元素进行排序，返回新数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// return a - b;  升序排列</span></span><br><span class="line">    <span class="comment">// return b - a;  降序排列</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>数组索引方法</p>
+<p><code>.indexOf(元素, 3)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从索引号为3的元素起，返回数组中第一个满足条件的索引号 (即元素在数组中的位置)，若数组中没有该元素，则返回-1</p>
+<p><code>.lastIndexOf(元素)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返回数组中最后一个满足条件的索引号 (从后往前找)</p>
+<p>数组转换为字符串</p>
+<p><code>.toString()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;转换为字符串后数组中的元素还是以逗号分隔</p>
+<p><code>.join(&#39;分隔符&#39;)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以自定义分隔符，默认还是逗号</p>
+<p>附：</p>
+<p><code>arr.concat(arr1, arr2, ...)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;连接两个或多个数组</p>
+<p><code>arr.slice(2, 4)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;截取数组，返回被截取的新数组，不会影响原数组 (括号中的数字代表索引号，左闭右开)</p>
+<p><code>arr.splice(从第几个开始, 要删除的个数)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返回被删除的数组，会影响原数组 (与slice一样，括号中的数字代表索引号)<br><br><br>字符串对象：</p>
+<p>根据位置返回字符</p>
+<p><code>.charAt(3)</code>: &nbsp;&nbsp;返回指定位置的字符</p>
+<p><code>.charCodeAt(3)</code>: &nbsp;&nbsp;获取指定位置处字符的ASCLL码</p>
+<p><code>str[3]</code>: &nbsp;&nbsp;获取指定位置处字符</p>
+<p>字符串操作方法</p>
+<p><code>.concat(str1, str2, ...)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;连接多个字符串，等价于 ‘+’</p>
+<p><code>.slice() </code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同数组的 附(见上)</p>
+<p><code>.substr(start, length)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从star位置开始(索引号)，length 取的个数</p>
+<p><code>.replace(&#39;被替换的字符&#39;, &#39;替换为的字符&#39;)</code>&nbsp;&nbsp;&nbsp;&nbsp;只会替换第一个符合的字符</p>
+<p><code>.split(&#39;分隔符&#39;)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符转换为数组，与 join 相反 (分隔符取决于数组中的符号)</p>
+<p><code>.toUpperCase()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;转换为大写</p>
+<p><code>.toLowerCase()</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;转换为小写</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">xiaoshuang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/02/12/JS(%E5%9F%BA%E7%A1%80)/">http://example.com/2021/02/12/JS(基础)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JS/">JS</a></div><div class="post_share"><div class="social-share" data-image="/img/back.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/02/19/JS(%E8%BF%9B%E9%98%B6)/"><img class="prev-cover" src="/img/back.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">JS进阶</div></div></a></div><div class="next-post pull-right"><a href="/2021/02/12/CSS%E5%AE%9E%E4%BE%8B/"><img class="next-cover" src="/img/back.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">CSS实例</div></div></a></div></nav><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1803321138&auto=1&height=66"></iframe><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/02/19/JS(进阶)/" title="JS进阶"><img class="cover" src="/img/back.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-19</div><div class="title">JS进阶</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/hello.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">xiaoshuang</div><div class="author-info__description">Study</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">11</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiaoshuang20"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9D%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">1. 初识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">2. 基础</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/08/27/Java%E5%9F%BA%E7%A1%80/" title="Java基础"><img src="/img/back.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java基础"/></a><div class="content"><a class="title" href="/2021/08/27/Java%E5%9F%BA%E7%A1%80/" title="Java基础">Java基础</a><time datetime="2021-08-27T03:26:56.000Z" title="Created 2021-08-27 11:26:56">2021-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/30/jQuery/" title="jQuery"><img src="/img/back.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="jQuery"/></a><div class="content"><a class="title" href="/2021/07/30/jQuery/" title="jQuery">jQuery</a><time datetime="2021-07-30T09:21:30.000Z" title="Created 2021-07-30 17:21:30">2021-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/21/C++%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" title="C++实验报告"><img src="/img/back.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++实验报告"/></a><div class="content"><a class="title" href="/2021/03/21/C++%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" title="C++实验报告">C++实验报告</a><time datetime="2021-03-21T10:57:20.000Z" title="Created 2021-03-21 18:57:20">2021-03-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/19/JS(%E8%BF%9B%E9%98%B6)/" title="JS进阶"><img src="/img/back.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JS进阶"/></a><div class="content"><a class="title" href="/2021/02/19/JS(%E8%BF%9B%E9%98%B6)/" title="JS进阶">JS进阶</a><time datetime="2021-02-19T14:10:34.000Z" title="Created 2021-02-19 22:10:34">2021-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/12/JS(%E5%9F%BA%E7%A1%80)/" title="JS基础"><img src="/img/back.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JS基础"/></a><div class="content"><a class="title" href="/2021/02/12/JS(%E5%9F%BA%E7%A1%80)/" title="JS基础">JS基础</a><time datetime="2021-02-12T14:15:59.000Z" title="Created 2021-02-12 22:15:59">2021-02-12</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/back.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2021   <i id="heartbeat" class="fa fas fa-heartbeat"></i> xiaoshuang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></head></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    let initData = {
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      placeholder: '留下你的足迹吧',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick,mail'.split(','))
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="ture"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
